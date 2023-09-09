@@ -51,4 +51,29 @@ def h1(s):
 def h3(s):
     # implement this function
     board, _, _ = s
-    return 0
+    res=0
+    #row 1
+    for idx in range(0,3):
+        if board[idx] not in (1,2,3):
+            res+=1
+    #row 2
+    for idx in range(3,6):
+        if board[idx] not in (4,5,6):
+            res+=1
+    #row 3
+    for idx in range(6,8):
+        if board[idx] not in (7,8):
+            res+=1
+    #col 1
+    for idx in (0,3,6):
+        if board[idx] not in (1,4,7):
+            res+=1
+    #col 2
+    for idx in (1,4,7):
+        if board[idx] not in (2,5,8):
+            res+=1
+    #col 3
+    for idx in (2,5):
+        if board[idx] not in (3,6):
+            res+=1
+    return res
