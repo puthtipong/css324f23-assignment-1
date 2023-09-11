@@ -51,29 +51,21 @@ def h1(s):
 def h3(s):
     # implement this function
     board, _, _ = s
+    goal = (1, 2, 3, 4, 5, 6, 7, 8, 0)
     res=0
-    #row 1
-    for idx in range(0,3):
-        if board[idx] not in (1,2,3):
-            res+=1
-    #row 2
-    for idx in range(3,6):
-        if board[idx] not in (4,5,6):
-            res+=1
-    #row 3
-    for idx in range(6,8):
-        if board[idx] not in (7,8):
-            res+=1
-    #col 1
-    for idx in (0,3,6):
-        if board[idx] not in (1,4,7):
-            res+=1
-    #col 2
-    for idx in (1,4,7):
-        if board[idx] not in (2,5,8):
-            res+=1
-    #col 3
-    for idx in (2,5):
-        if board[idx] not in (3,6):
-            res+=1
+    for idx in range(0,9):
+        if board[idx]!=0:
+            #0 isn't a tile so it isn't counted
+            goalrow,goalcol=tilePosition(goal.index(board[idx])) #row and col the tile is supposed to be in
+            boardrow,boardcol=tilePosition(idx) #actual row and col
+            if(boardrow!=goalrow):
+                res+=1
+            if(boardcol!=goalcol):
+                res+=1
+        
     return res
+
+def tilePosition(pos):
+    #input: an index pos
+    #output: a tuple containing row and col in (0,1,2)
+    return divmod(pos,3)
