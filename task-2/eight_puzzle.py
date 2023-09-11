@@ -56,16 +56,17 @@ def h3(s):
     for idx in range(0,9):
         if board[idx]!=0:
             #0 isn't a tile so it isn't counted
-            goalrow,goalcol=tilePosition(goal.index(board[idx])) #row and col the tile is supposed to be in
-            boardrow,boardcol=tilePosition(idx) #actual row and col
+            boardidx=goal.index(board[idx])
+            goalrow,goalcol=boardidx//3,boardidx%3 #row and col the tile is supposed to be in
+            boardrow,boardcol=idx//3,idx%3  #actual row and col
+            """
             if(boardrow!=goalrow):
                 res+=1
             if(boardcol!=goalcol):
                 res+=1
+            #if the tile is out of its target row, res+=1, same for col (different interpretation of task)
+            """
+            res+=abs(boardrow-goalrow)+abs(boardcol-goalcol) #finds the manhattan distance
         
     return res
 
-def tilePosition(pos):
-    #input: an index pos
-    #output: a tuple containing row and col in (0,1,2)
-    return divmod(pos,3)
