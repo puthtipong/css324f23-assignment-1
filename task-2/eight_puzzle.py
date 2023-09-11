@@ -67,6 +67,5 @@ def h3(s):
             #if the tile is out of its target row, res+=1, same for col (different interpretation of task)
             """
             res+=abs(boardrow-goalrow)+abs(boardcol-goalcol) #finds the manhattan distance
-        
     return res
 
