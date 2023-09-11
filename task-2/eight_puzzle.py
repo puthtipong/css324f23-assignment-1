@@ -59,13 +59,14 @@ def h3(s):
             boardidx=goal.index(board[idx])
             goalrow,goalcol=boardidx//3,boardidx%3 #row and col the tile is supposed to be in
             boardrow,boardcol=idx//3,idx%3  #actual row and col
-            """
+            
             if(boardrow!=goalrow):
                 res+=1
             if(boardcol!=goalcol):
                 res+=1
             #if the tile is out of its target row, res+=1, same for col (different interpretation of task)
-            """
-            res+=abs(boardrow-goalrow)+abs(boardcol-goalcol) #finds the manhattan distance
+            
+            #if the tile is out of its target row, res+=1, same for col (different interpretation of task)
+            #res+=abs(boardrow-goalrow)+abs(boardcol-goalcol) #finds the manhattan distance
     return res
 
